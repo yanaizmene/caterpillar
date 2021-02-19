@@ -4,7 +4,8 @@ class TicketsController < ApplicationController
   skip_forgery_protection
 
   def index
-    @tickets = Ticket.joins(:excavator)
+    @tickets = Ticket.includes(:excavator)
+                     .references(:excavator)
                      .page(params[:page] || 1)
                      .per(params[:per] || 20)
                      .map do |ticket|
@@ -13,7 +14,9 @@ class TicketsController < ApplicationController
   end
 
   def show
-    ticket_db = Ticket.joins(:excavator).find_by!(request_number: params[:id])
+    ticket_db = Ticket.includes(:excavator)
+                      .references(:excavator)
+                      .find_by!(request_number: params[:id])
     @excavator = ExcavatorPresenter.new(ticket_db.excavator)
     @ticket = TicketPresenter.new(
       ticket_db,
