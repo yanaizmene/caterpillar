@@ -16,7 +16,7 @@ module TicketService
         params.dig('Excavator', 'City'),
         params.dig('Excavator', 'State'),
         params.dig('Excavator', 'Zip')
-      ].join(' ')
+      ].compact.join(' ')
     end
   end
 end
