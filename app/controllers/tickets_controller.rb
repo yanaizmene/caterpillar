@@ -17,7 +17,6 @@ class TicketsController < ApplicationController
     ticket_db = Ticket.includes(:excavator)
                       .references(:excavator)
                       .find_by!(request_number: params[:id])
-    @excavator = ExcavatorPresenter.new(ticket_db.excavator)
     @ticket = TicketPresenter.new(
       ticket_db,
       i18n_datetime_format: :long

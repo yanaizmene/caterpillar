@@ -26,13 +26,15 @@
               Additional Area Codes: <%= @ticket.additional_area_codes %>
             </p>
           </div>
-          <% if @excavator %>
-            <div class="col s6">
-              <p><b>Excavator</b></p>
-              <p><%= @excavator.company_name %></p>
-              <p><%= @excavator.address %></p>
-              <p><%= @excavator.crew_on_site %></p>
-            </div>
+          <% if @ticket.excavator %>
+            <% ExcavatorPresenter.represent(@ticket.excavator) do |excavator| %>
+              <div class="col s6">
+                <p><b>Excavator</b></p>
+                <p><%= excavator.company_name %></p>
+                <p><%= excavator.address %></p>
+                <p><%= excavator.crew_on_site %></p>
+              </div>
+            <% end %>
           <% end %>
         </div>
       </div>
