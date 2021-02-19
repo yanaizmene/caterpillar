@@ -1,24 +1,12 @@
-# README
+# Caterpillar Test Task
+    git clone https://github.com/yanaizmene/caterpillar.git
+    cd caterpillar && bundle
+Update `config/database.yml` if needed
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+    rails db:setup
+    rails s
 
-Things you may want to cover:
+## Dependencies:
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Ruby 2.7
+* PostgreSQL
