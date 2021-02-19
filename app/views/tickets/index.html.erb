@@ -1,0 +1,25 @@
+<h1>Tickets</h1>
+
+<table>
+  <thead>
+    <tr>
+        <th>Request</th>
+        <th>Sequence</th>
+        <th>Due Date</th>
+        <th>Excavator</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% if @tickets.any? %>
+      <%= render(@tickets) %>
+    <% else %>
+      <tr>
+        <td colspan=4>
+          no tickets so far.
+          <%= link_to('how to create', page_path(:'how-to-add-ticket')) %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

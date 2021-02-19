@@ -1,0 +1,12 @@
+<tr>
+  <td nowrap>
+    <%= link_to(ticket.request_number, ticket) %>
+  </td>
+  <td><%= ticket.sequence_number %></td>
+  <td><%= ticket.due_date %></td>
+  <td>
+    <%= ticket.excavator.company_name %>
+    <br />
+    <%= ticket.excavator.address %>
+  </td>
+</tr>

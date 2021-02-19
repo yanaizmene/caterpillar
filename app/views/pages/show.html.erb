@@ -1,0 +1,44 @@
+<h1>Create Ticket</h1>
+
+<blockquote>
+  To create sample ticket use this curl snippet
+</blockquote>
+<code>
+  <pre>
+      curl --location --request POST 'localhost:3000/tickets' \
+        --header 'Content-Type: application/json' \
+        --data-raw '{
+          "RequestNumber": "09252012-00001",
+          "SequenceNumber": "2421",
+          "RequestType": "Normal",
+          "DateTimes": {
+            "ResponseDueDateTime": "2011/07/13 23:59:59"
+          },
+          "ServiceArea": {
+            "PrimaryServiceAreaCode": {
+              "SACode": "ZZGL103"
+            },
+            "AdditionalServiceAreaCodes": {
+              "SACode": [
+                "ZZL01",
+                "ZZL02",
+                "ZZL03"
+              ]
+            }
+          },
+          "Excavator": {
+            "CompanyName": "John Doe CONSTRUCTION",
+            "Address": "555 Some RD",
+            "City": "SOME PARK",
+            "State": "ZZ",
+            "Zip": "55555",
+            "CrewOnsite": "true"
+          },
+          "ExcavationInfo": {
+            "DigsiteInfo": {
+              "WellKnownText": "POLYGON((23.4225383 35.1648275,23.5915249 35.7821707,26.3839467 35.3173663,26.3399715 34.7867392,24.8620456 34.8318411,23.4266181 35.1738083))"
+            }
+          }
+        }'
+  </pre>
+</code>

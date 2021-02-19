@@ -1,0 +1,67 @@
+<h1>Ticket #<%= @ticket.request_number %></h1>
+<h2><%= l(@ticket.created_at, format: :long) %></h2>
+<div class="row">
+  <div class="col s12">
+    <div class="card">
+      <div class="card-content white-text">
+        <div id="map" style="height: 500px; width: 100%;"></div>
+      </div>
+      <div class="card-content">
+        <div class="row">
+          <div class="col s6">
+            <p><b>Details</b></p>
+            <p>
+              Sequence Number: <%= @ticket.sequence_number %>
+            </p>
+            <p>
+              Request Type: <%= @ticket.request_type %>
+            </p>
+            <p>
+              Due Date: <%= @ticket.due_date %>
+            </p>
+            <p>
+              Area Code: <%= @ticket.primary_service_area_code %>
+            </p>
+            <p>
+              Additional Area Codes: <%= @ticket.additional_area_codes %>
+            </p>
+          </div>
+          <% if @excavator %>
+            <div class="col s6">
+              <p><b>Excavator</b></p>
+              <p><%= @excavator.company_name %></p>
+              <p><%= @excavator.address %></p>
+              <p><%= @excavator.crew_on_site %></p>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function initMap() {
+
+    const map = new google.maps.Map(document.getElementById("map"), {
+      zoom: 6,
+      center: <%= @ticket.polygon_coords.first.to_json.html_safe %>
+    });
+
+    const polygon_coords = <%= @ticket.polygon_coords.to_json.html_safe %>;
+    const polygon = new google.maps.Polygon({
+      paths: polygon_coords,
+      strokeColor: "#FF0000",
+      strokeOpacity: 0.8,
+      strokeWeight: 2,
+      fillColor: "#FF0000",
+      fillOpacity: 0.1,
+    });
+    polygon.setMap(map);
+  }
+</script>
+
+<script
+  src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQEBViOZmvou-ECtwgJcZ2Q61to91ZAew&callback=initMap&libraries=&v=weekly"
+  async
+></script>
