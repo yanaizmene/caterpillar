@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class TicketPresenter < SimpleDelegator
+  def self.represent(ticket, params = {})
+    yield new(ticket, params)
+  end
+
   attr_reader :params
 
   def initialize(ticket, params = {})

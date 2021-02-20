@@ -8,19 +8,12 @@ class TicketsController < ApplicationController
                      .references(:excavator)
                      .page(params[:page] || 1)
                      .per(params[:per] || 20)
-                     .map do |ticket|
-                       TicketPresenter.new(ticket)
-                     end
   end
 
   def show
-    ticket_db = Ticket.includes(:excavator)
+    @ticket = Ticket.includes(:excavator)
                       .references(:excavator)
                       .find_by!(request_number: params[:id])
-    @ticket = TicketPresenter.new(
-      ticket_db,
-      i18n_datetime_format: :long
-    )
   end
 
   def create

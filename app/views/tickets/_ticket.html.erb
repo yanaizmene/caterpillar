@@ -1,12 +1,14 @@
-<tr>
-  <td nowrap>
-    <%= link_to(ticket.request_number, ticket) %>
-  </td>
-  <td><%= ticket.sequence_number %></td>
-  <td><%= ticket.due_date %></td>
-  <td>
-    <%= ticket.excavator.company_name %>
-    <br />
-    <%= ticket.excavator.address %>
-  </td>
-</tr>
+<% TicketPresenter.represent(ticket) do |presenter| %>
+  <tr>
+    <td nowrap>
+      <%= link_to(presenter.request_number, presenter) %>
+    </td>
+    <td><%= presenter.sequence_number %></td>
+    <td><%= presenter.due_date %></td>
+    <td>
+      <%= presenter.excavator.company_name %>
+      <br />
+      <%= presenter.excavator.address %>
+    </td>
+  </tr>
+<% end %>
