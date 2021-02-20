@@ -2,7 +2,7 @@
 
 RSpec.describe ExcavatorPresenter do
   describe '#crew_on_site' do
-    it 'returns yes' do
+    it 'returns template for crew on site' do
       excavator = instance_double(
         Excavator, crew_on_site: true
       )
@@ -10,7 +10,7 @@ RSpec.describe ExcavatorPresenter do
       expect(presenter.crew_on_site).to eq('Crew is on site')
     end
 
-    it 'returns yes' do
+    it 'returns template for crew is not on site' do
       excavator = instance_double(
         Excavator, crew_on_site: false
       )
