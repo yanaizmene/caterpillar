@@ -53,6 +53,14 @@ RSpec.describe do
            headers: { 'CONTENT_TYPE' => 'application/json' }
     end
 
+    it 'does not creates ticket' do
+      expect { subject }.not_to(change { Ticket.count })
+    end
+
+    it 'does not creates excavator' do
+      expect { subject }.not_to(change { Ticket.count })
+    end
+
     it 'responds correctly' do
       subject
       expect(json).to eq(
