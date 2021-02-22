@@ -15,8 +15,8 @@ ActiveRecord::Schema.define(version: 2021_02_19_100802) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
-  create_table "excavators", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
-    t.uuid "ticket_id", null: false
+  create_table "excavators", force: :cascade do |t|
+    t.bigint "ticket_id", null: false
     t.string "company_name", null: false
     t.string "address", null: false
     t.boolean "crew_on_site", null: false
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 2021_02_19_100802) do
     t.index ["ticket_id"], name: "index_excavators_on_ticket_id"
   end
 
-  create_table "tickets", id: :uuid, default: -> { "gen_random_uuid()" }, force: :cascade do |t|
+  create_table "tickets", force: :cascade do |t|
     t.string "request_number", null: false
     t.integer "sequence_number", null: false
     t.string "request_type", null: false

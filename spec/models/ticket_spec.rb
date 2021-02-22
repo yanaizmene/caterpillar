@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Ticket do
-  it { is_expected.to have_db_column(:id).of_type(:uuid).with_options(null: false) }
+  it { is_expected.to have_db_column(:id).of_type(:integer).with_options(null: false) }
   it { is_expected.to have_db_column(:request_number).of_type(:string).with_options(null: false) }
   it { is_expected.to have_db_column(:sequence_number).of_type(:integer).with_options(null: false) }
   it { is_expected.to have_db_column(:request_type).of_type(:string).with_options(null: false) }

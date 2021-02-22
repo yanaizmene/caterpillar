@@ -1,6 +1,6 @@
 class CreateTickets < ActiveRecord::Migration[6.1]
   def change
-    create_table :tickets, id: :uuid do |t|
+    create_table :tickets do |t|
       t.string :request_number, null: false
       t.integer :sequence_number, null: false
       t.string :request_type, null: false

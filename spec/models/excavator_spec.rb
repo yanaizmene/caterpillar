@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 RSpec.describe Excavator do
-  it { is_expected.to have_db_column(:id).of_type(:uuid).with_options(null: false) }
+  it { is_expected.to have_db_column(:id).of_type(:integer).with_options(null: false) }
   it { is_expected.to have_db_column(:company_name).of_type(:string).with_options(null: false) }
   it { is_expected.to have_db_column(:address).of_type(:string).with_options(null: false) }
   it { is_expected.to have_db_column(:crew_on_site).of_type(:boolean).with_options(null: false) }
