@@ -12,8 +12,8 @@ class TicketsController < ApplicationController
 
   def show
     @ticket = Ticket.includes(:excavator)
-                      .references(:excavator)
-                      .find_by!(request_number: params[:id])
+                    .references(:excavator)
+                    .find_by!(request_number: params[:id])
   end
 
   def create
