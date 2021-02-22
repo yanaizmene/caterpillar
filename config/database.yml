@@ -6,6 +6,9 @@ default: &default
 development:
   <<: *default
   database: caterpillar
+  host: localhost
+  username:
+  password:
 
 test:
   <<: *default
